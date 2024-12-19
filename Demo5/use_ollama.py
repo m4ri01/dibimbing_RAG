@@ -39,7 +39,7 @@ if 'pipeline_retrieve' not in st.session_state:
     pipeline_retrieve.add_component("embedder",SentenceTransformersTextEmbedder())
     pipeline_retrieve.add_component("retriever",InMemoryEmbeddingRetriever(document_store=st.session_state.document_store,top_k=5))
     pipeline_retrieve.add_component("builder",PromptBuilder(template=template))
-    pipeline_retrieve.add_component("generator",OllamaGenerator(model="llama2",url="http://localhost:11434/api/generate",generation_kwargs={
+    pipeline_retrieve.add_component("generator",OllamaGenerator(model="phi3",url="http://localhost:11434/api/generate",generation_kwargs={
         "num_predict":-2,
         "temperature":0.9,
     }))

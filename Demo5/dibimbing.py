@@ -39,7 +39,7 @@ if 'pipeline_retrieve' not in st.session_state:
     pipeline_retrieve.add_component("embedder",SentenceTransformersTextEmbedder())
     pipeline_retrieve.add_component("retriever",InMemoryEmbeddingRetriever(document_store=st.session_state.document_store,top_k=5))
     pipeline_retrieve.add_component("builder",PromptBuilder(template=template))
-    pipeline_retrieve.add_component("generator",OpenAIGenerator(api_key=Secret.from_token("insert_your_token"),model="gpt-3.5-turbo"))
+    pipeline_retrieve.add_component("generator",OpenAIGenerator(api_key=Secret.from_token("API_KEY"),model="gpt-3.5-turbo"))
     pipeline_retrieve.connect("embedder","retriever")
     pipeline_retrieve.connect("retriever","builder")
     pipeline_retrieve.connect("builder","generator")
